@@ -1,3 +1,5 @@
+console.log('process.env.HACKATON = ', process.env.HACKATRAN_HOST)
+
 module.exports = {
    "type": "postgres",
    "host": process.env.HACKATRAN_HOST,
