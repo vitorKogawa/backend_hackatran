@@ -13,7 +13,7 @@ createConnection({
     username: String(process.env.HACKATRAN_USERNAME),
     password: String(process.env.HACKATRAN_PASSWORD),
     entities: [
-        __dirname + '/database/entity/*.ts'
+        __dirname + '/database/entity/*.js'
     ],
     synchronize: true,
     logging: false
