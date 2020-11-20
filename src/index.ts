@@ -7,11 +7,11 @@ import './config/env'
 
 createConnection({  
     type: 'postgres',
-    host: String(process.env.LOCAL_HOST),
-    database: String(process.env.LOCAL_DATABASE),
-    port: 5432,
-    username: String(process.env.LOCAL_USERNAME),
-    password: String(process.env.LOCAL_PASSWORD),
+    host: String(process.env.HACKATRAN_HOST),
+    database: String(process.env.HACKATRAN_DATABASE),
+    port: 5434,
+    username: String(process.env.HACKATRAN_USERNAME),
+    password: String(process.env.HACKATRAN_PASSWORD),
     entities: [
         __dirname + '/database/entity/*.ts'
     ],
@@ -20,10 +20,16 @@ createConnection({
 })
 .then(response => {
     const server = express()
-    const port = 3333
+    const port: string | number = process.env.PORT || 5000
     server.use(cors())
     server.use(express.json())
     server.use(routes)
+
+    //teste
+    server.use('*', (request, response) => {
+        response.send("<h1>E-Tran Online!!</h1>")
+    })
+
     server.listen(port, () => {
         console.log('Servidor rodando na porta: ', port)
     })
